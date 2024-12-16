@@ -1,0 +1,326 @@
+@import 'colors';
+
+#services {
+  margin-top: 3.75rem;
+  padding: 0 10rem; // Отступы 160px слева и справа
+
+  .services-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600; // Semibold
+    font-size: 3rem; // 48px
+    margin-bottom: 6.5rem; // 104px
+  }
+
+  .services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 1.25rem; // 32px вертикально, 20px горизонтально
+    justify-content: center;
+  }
+
+  .service-card {
+    position: relative;
+    width: 22.5rem; // 360px
+    min-height: 37.5rem; // 600px
+    border-radius: 0.75rem; // 12px
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(225, 231, 245, 0.95);
+    background-blend-mode: soft-light; // Прозрачность только для белого фона
+    box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25); // X=0, Y=4px, Blur=4px, Color=Black 25%
+
+    .service-header {
+      display: flex;
+      padding: 3.375rem 1rem; // 54px vertical, 12px horizontal
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.25rem;
+      padding-bottom: 1.75rem;
+      cursor: pointer;
+
+      h2 {
+        left: 0%;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400; // Regular
+        font-size: 1.75rem; // 32px
+        align-self: flex-start;
+      }
+
+      .toggle-button {
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: $light-gray-ish;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        display: none;
+      }
+    }
+
+    .service-content {
+      padding: 0 1rem; // 54px vertical, 12px horizontal
+      display: flex;
+      flex-direction: column;
+      gap: 1.875rem; // 30px
+
+      h2 {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400; // Regular
+        font-size: 2rem; // 32px
+      }
+
+      p {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400; // Light
+        font-size: 0.875rem; // 14px
+      }
+
+      .price {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400; // Regular
+        font-size: 2.25rem; // 36px
+      }
+
+      .book-button {
+        width: 100%;
+        height: 3rem; // 48px
+        background-color: $blue-ish;
+        color: $white-ish;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500; // Medium
+        font-size: 1rem; // 16px
+        border-radius: 0.25rem; // 4px
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: darken($blue-ish, 10%);
+        }
+      }
+
+      .book-button.desktop-only {
+        display: none; // Скрываем на мобильных
+      }
+    }
+  }
+}
+
+#faq {
+  padding: 0 10rem; // Отступы 160px слева и справа
+  margin-top: 5.75rem; // 92px
+  text-align: left;
+
+  .faq-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400; // Regular
+    font-size: 2.25rem; // 36px
+    margin-bottom: 3rem; // 48px
+  }
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // 24px
+
+    .faq-item {
+      padding: 0 2.5rem; // 40px
+      padding-bottom: 1.725rem;
+      border-bottom: 1px solid $light-gray-ish; // Light-gray border
+      position: relative;
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 300; // Light
+        font-size: 1.75rem; // 28px
+        cursor: pointer;
+
+        .toggle-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+
+          img {
+            width: 1.25rem; // Adjust arrow size
+            height: 1.25rem;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .faq-answer {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 300; // Light
+        font-size: 1.5rem; // 16px
+        margin-top: 1.75rem; // 28px
+        text-align: left;
+        display: none;
+
+        p {
+          position: relative;
+          padding-left: 1.5rem; // Indent for bullet
+
+          &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: $light-gray-ish;
+          }
+        }
+      }
+
+      &.active .faq-answer {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  #services {
+    padding: 0 2rem; // Меньшие отступы для мобильных
+    .service-card {
+      .service-header {
+        h2 {
+          font-size: 1.25rem; // 24px
+        }
+        .services-title {
+          font-size: 1.5rem; // 24px
+          margin-bottom: 2rem; // 32px
+        }
+      }
+    }
+  }
+  #faq {
+    padding: 0 0rem; // Отступы 160px слева и справа
+
+    .faq-title {
+      text-align: center;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 400; // Regular
+      margin-bottom: 3rem; // 48px
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #services {
+    .services-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .service-card {
+      .service-header {
+        justify-self: center;
+        padding-bottom: 1.25rem;
+
+        .toggle-button {
+          display: flex;
+        }
+      }
+      width: 100%; // Карточка на всю ширину
+      min-height: 0rem; // 600px
+
+      .service-content {
+        display: none; /* По умолчанию скрыто */
+      }
+
+      &.expanded {
+        padding-bottom: 2.5rem;
+      }
+
+      &.expanded .service-content {
+        display: block; /* Раскрытое состояние */
+        padding: 0 1rem; // 54px vertical, 12px horizontal
+        display: flex;
+        flex-direction: column;
+        gap: 1.875rem; // 30px
+
+        h2 {
+          font-family: 'Roboto Condensed', sans-serif;
+          font-weight: 400; // Regular
+          font-size: 2rem; // 32px
+        }
+
+        p {
+          font-family: 'Roboto Condensed', sans-serif;
+          font-weight: 400; // Light
+          font-size: 0.875rem; // 14px
+        }
+
+        .price {
+          font-family: 'Roboto Condensed', sans-serif;
+          font-weight: 400; // Regular
+          font-size: 2.25rem; // 36px
+        }
+
+        .book-button {
+          width: 100%;
+          height: 3rem; // 48px
+          background-color: $blue-ish;
+          color: $white-ish;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500; // Medium
+          font-size: 1rem; // 16px
+          border-radius: 0.25rem; // 4px
+          border: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            background-color: darken($blue-ish, 10%);
+          }
+        }
+
+        .book-button.desktop-only {
+          display: none; // Скрываем на мобильных
+        }
+      }
+
+      &.expanded .toggle-button {
+        content: '-'; /* Меняем на "-" в раскрытом состоянии */
+      }
+    }
+  }
+  #faq {
+    padding: 0 0rem; // Отступы 160px слева и справа
+
+    .faq-title {
+      text-align: center;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 400; // Regular
+      font-size: 1.5rem; // 36px
+      margin-bottom: 3rem; // 48px
+    }
+    .faq-container {
+      .faq-item {
+        padding: 0 1rem; // 40px
+        .faq-question {
+          font-size: 1.125rem; // 28px
+          padding-bottom: 1rem;
+        }
+
+        .faq-answer {
+          margin-top: 0rem;
+          font-size: 0.875rem; // 28px
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
